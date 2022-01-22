@@ -1,4 +1,7 @@
 "use strict";
+
+const { sequelize } = require("../models");
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("Curses", {
@@ -26,6 +29,12 @@ module.exports = {
       UserId: {
         type: Sequelize.INTEGER,
         references: { model: "Users", key: "id" },
+        onDelete: "CASCADE",
+        allowNull: false,
+      },
+      categoryId: {
+        type: sequelize.STRING,
+        references: { model: "categories", key: "id" },
         onDelete: "CASCADE",
         allowNull: false,
       },

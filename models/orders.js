@@ -8,11 +8,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Orders.belongsTo(models.Users);
-      Orders.belongsToMany(Curses, { through: Curses_Has_Orders });
+      Orders.belongsTo(models.User);
+      Orders.belongsToMany(models.Curses, { through: "Curses_Has_Orders" });
     }
   }
-  orders.init(
+  Orders.init(
     {
       tracking_number: DataTypes.BOOLEAN,
     },

@@ -9,8 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Curses.belongsTo(models.User);
-      Curses.belongsToMany(Categories, { through: curses_has_categories });
-      Curses.belongsToMany(Orders, { through: Curses_Has_Orders });
+      Curses.belongsToMany(models.Categories, {
+        through: "curses_has_categories",
+      });
+      Curses.belongsToMany(models.Orders, { through: "Curses_Has_Orders" });
     }
   }
   Curses.init(
