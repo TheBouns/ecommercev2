@@ -1,5 +1,4 @@
 const { User } = require("../models/index.js");
-const user = require("../models/user.js");
 
 const UserController = {
   create(req, res) {
