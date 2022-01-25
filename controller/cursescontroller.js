@@ -3,13 +3,13 @@ const { Op } = Sequelize;
 
 const cursesController = {
   create(req, res) {
-    Curse.create({ ...req.body }).then(() =>
+    Curse.create({ ...req.body }).then((data) =>
       res.send({ message: "Curse Created" })
     );
   },
   showCurses(req, res) {
     Curse.findAll({
-      include:[{model:Order, as :'orders' ,foreignKey : 'OrderId'},{model:Categories, as:"categories"}]
+      include:[{model:Categories, as:"categories"}]
     })
       .then((curse) => res.send(curse))
       .catch(console.error);
