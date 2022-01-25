@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model, INTEGER } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Curse extends Model {
     /**
@@ -12,24 +10,67 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Curse.belongsTo(models.User);
       Curse.belongsToMany(models.Categories, {
-        through: "curses_has_categories"
+        through: "curse_has_categories",
+        as: "categories",
+        foreignKey:"CategoriesId"
       });
-      Curse.belongsToMany(models.Orders, { through: 'Curses_Has_Orders' });
+      Curse.belongsToMany(models.Order, {
+        through: "curses_has_orders",
+        as: "orders",
+        foreignKey: "OrderId",
+      });
     }
-  
-    
   }
-  Curse.init({
-    serial_number: DataTypes.STRING,
-    title: DataTypes.STRING,
-    duration: DataTypes.STRING,
-    price: DataTypes.FLOAT,
-    img: DataTypes.STRING,
-    UserId: DataTypes.INTEGER,
-    CategoryId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Curse',
-  });
+  Curse.init(
+    {
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Did u forget the name??",
+          },
+        },
+      },
+      duration: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Hoy much time i need to learn?",
+          },
+        },
+      },
+      price: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Introduce a price",
+          },
+        },
+      },
+      img: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Set a backgroung image",
+          },
+        },
+      },
+      UserId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      CategoriesId:{
+        type:Datatypes.INTEGER
+      }
+    },
+    {
+      sequelize,
+      modelName: "Curse",
+    }
+  );
   return Curse;
 };

@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 const curses = require("./curse");
-const curses_has_categories = require("./curses_has_categories");
+const curses_has_categories = require("./curse_has_categories");
 module.exports = (sequelize, DataTypes) => {
   class Categories extends Model {
     /**
@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Categories.belongsToMany(models.Curse, {
-        through: "curses_has_categories"
+        through: "curse_has_categories",
+        as: "categories",
+        foreignKey:"CategoriesId"
       });
     }
   }

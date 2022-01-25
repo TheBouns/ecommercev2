@@ -8,9 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      serial_number: {
-        type: Sequelize.STRING
-      },
       title: {
         type: Sequelize.STRING
       },
@@ -24,9 +21,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       UserId: {
-        type: Sequelize.INTEGER
-      },
-      CategoryId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
