@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const cursesController = require("../controller/cursescontroller");
 
-router.post("/create", cursesController.create);
+router.post("/create", cursesController.insert);
 router.get("/", cursesController.showCurses);
 router.get("/:id", cursesController.showById);
 router.get("/title/:title", cursesController.showByNameAll);

@@ -80,12 +80,13 @@ const categoriesController ={
             console.log(err);
           });
       },
-      categoriesCurses(req,res){
-          Categories.findAll({
-              include:[{model:Curse, as :'curse'}]
-          }).then(category => res.send(category))
-
-      }
+      CatCurs(req,res){
+        Categories.findAll({include: [
+          {model: Curse, as: 'curse', through: {attributes: []}}, 
+      ]})
+        .then(curse=> res.send(curse))
+        .catch(err => console.log(err))
+    },
 }
 
 module.exports = categoriesController;

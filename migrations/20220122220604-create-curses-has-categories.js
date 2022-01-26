@@ -8,15 +8,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      CursesId: {
+      CurseId: {
         type: Sequelize.INTEGER,
-        references: { model: "Users", key: "id" },
+        references: { model: "Curses", key: "id" },
         onDelete: "CASCADE",
         allowNull: false,
       },
       CategoriesId: {
         type: Sequelize.INTEGER,
-        references: { model: "Categories", key: "id" },
+        references: { model: "categories", key: "id" },
         onDelete: "CASCADE",
         allowNull: false,
       },

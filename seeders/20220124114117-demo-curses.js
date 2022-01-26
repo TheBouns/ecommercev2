@@ -3,7 +3,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('curses', [{
-      title: "programming 101",
+      title: "programming 102",
       duration:"400h",
       price:15,
       img:"aisjaisjas",

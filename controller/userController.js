@@ -1,10 +1,29 @@
 const { User,Curse } = require("../models/index.js");
+const bcrypt = require("bcryptjs");
 
 
 const UserController = {
+  login(req,res){
+    User.findOne({
+        where:{
+            email:req.body.email
+        }
+    }).then(user=>{
+        if(!user){
+            return res.status(400).send({message:"USer or Password Wrong"})
+        }
+        const isMatch = bcrypt.compareSync(req.body.password, user.password);
+        if(!isMatch){
+            return res.status(400).send({message:"User or Password Wrong"})
+        }
+        res.send(user)
+    })
+},
+
   create(req, res) {
     req.body.rol = "user";
-    User.create({ ...req.body })
+    const hash = bcrypt.hashSync(req.body.password,10)
+    User.create({ ...req.body, password:hash })
       .then((user) =>
         res.status(201).send({ message: "User created", user })
       )

@@ -1,19 +1,21 @@
-const { User, Curse, Sequelize,Categories,Order} = require("../models/index.js");
+const { Curse,Categories,Sequelize} = require("../models/index.js");
 const { Op } = Sequelize;
 
 const cursesController = {
-  create(req, res) {
-    Curse.create({ ...req.body }).then((data) =>
-      res.send({ message: "Curse Created" })
-    );
-  },
-  showCurses(req, res) {
-    Curse.findAll({
-      include:[{model:Categories, as:"categories"}]
+  insert (req,res){
+    Curse.create({...req.body})
+    .then(curse=>{
+      curse.addCategories(req.body.CategoriesId)
+      res.send(curse);
     })
-      .then((curse) => res.send(curse))
-      .catch(console.error);
   },
+  showCurses(req,res){
+    Curse.findAll({include: [
+      {model: Categories, as: 'categories', through: {attributes: []}}, 
+  ]})
+    .then(curse=> res.send(curse))
+    .catch(err => console.log(err))
+},
   showById(req, res) {
     Curse.findOne({
       where: {
