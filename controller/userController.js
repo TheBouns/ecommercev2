@@ -1,5 +1,9 @@
-const { User,Curse } = require("../models/index.js");
+const { User,Curse,Token,Sequelize} = require("../models/index.js");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const {jwt_secret}  = require("../config/config.json")['development']
+const {Op} = Sequelize;
+
 
 
 const UserController = {
@@ -10,13 +14,15 @@ const UserController = {
         }
     }).then(user=>{
         if(!user){
-            return res.status(400).send({message:"USer or Password Wrong"})
+            return res.status(400).send({message:"User or Password Wrong"})
         }
         const isMatch = bcrypt.compareSync(req.body.password, user.password);
         if(!isMatch){
             return res.status(400).send({message:"User or Password Wrong"})
         }
-        res.send(user)
+        token = jwt.sign({id:user.id}, jwt_secret)
+        Token.create({token,UserId:user.id});
+        res.send(`Welcome ${user.name}`)
     })
 },
 
@@ -70,7 +76,25 @@ const UserController = {
         console.error(error)
         res.status(500).send({message:"Something went wrong"})
     }
+},
+async logout(req, res) {
+  try {
+      await Token.destroy({
+          where: {
+              [Op.and]: [
+                  { UserId: req.user.id },
+                  { token: req.headers.authorization }
+              ]
+          }
+      });
+      res.send({ message: 'Desconectado con éxito' })
+  } catch (error) {
+      console.log(error)
+      res.status(500).send({ message: 'hubo un problema al tratar de desconectarte' })
+  }
 }
+
+
 };
 
 module.exports = UserController;

@@ -4,7 +4,8 @@
     "password": "sanroque",
     "database": "ecommerce2",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "jwt_secret":"leonWebsite"
   },
   "test": {
     "username": "root",
