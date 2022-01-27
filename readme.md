@@ -36,6 +36,8 @@ To add this admin to the database run the follow command: `sequelize db:seed:all
 
 Then migrate the tables to your DB: `sequelize db:migrate`.
 
+**LAST STEP ENJOY**
+
 ---------------------------------------------------------------------------------------------------------------
 
 ## Basic endpoints
