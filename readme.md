@@ -17,7 +17,7 @@ This is a simple database for an ecommerce developed with Node.js:
 
 By default the template is configured to connect to a MySql database.
 The database has 4  tables : categories, orders,curses and users.
-![diagram representig the relation between tables in Mysql](assets/ecommercedb.jpeg)
+![diagram representig the relation between tables in Mysql](ecommercedb.jpeg)
 
 ## Starting with the project🌟🌟
 
