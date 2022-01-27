@@ -20,6 +20,7 @@ The database has 4  tables : categories, orders,curses and users.
 ![diagram representig the relation between tables in Mysql](ecommercedb.jpeg)
 
 ## Starting with the project
+
 By default is created an Admin user ("admin") to start to create endpoints and does changes to the data base.
 To add this admin to the database run the follow command: `sequelize db:seed:all`.
 ---------------------------------------------------------------------------------------------------------------
