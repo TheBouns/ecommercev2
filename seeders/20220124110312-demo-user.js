@@ -1,5 +1,6 @@
+require('dotenv').config()
 const bcrypt = require("bcryptjs")
-const password = "password";
+const password = process.env.BONSIPASS;
 const hash = bcrypt.hashSync(password,10)
 'use strict';
 
