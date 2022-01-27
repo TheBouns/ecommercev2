@@ -10,7 +10,7 @@ This is a simple database for an ecommerce developed with Node.js:
 ## Working on the project 👷‍♂️
 * Move into the project directory: `cd ~/YOUR_PROJECTS_DIRECTORY/YOUR_PROJECT_NAME`
 * Run the project with : `npm run dev`
-    * Server runs at [https://localhost:65000](https://localhost:4000) (by default).
+    * Server runs at [https://localhost:4000](https://localhost:4000) (by default).
     * Automatically restarts when any of your files change
 
 ## Databases
@@ -20,8 +20,8 @@ The database has 4  tables : categories, orders,curses and users.
 ![diagram representig the relation between tables in Mysql](ecommercedb.jpeg)
 
 ## Starting with the project🌟🌟
----------------------------------------------------------------------------------------------------------------
-By default is created an Admin user ("admin") to start to create endpoints and does changes to the data base.
+
+By default an Admin user is created ("admin") to start creating and making changes   to the data base.
 To add this admin to the database run the follow command: `sequelize db:seed:all`.
 ---------------------------------------------------------------------------------------------------------------
 
@@ -40,11 +40,8 @@ To add this admin to the database run the follow command: `sequelize db:seed:all
 - **Express**
 - **Nodemon**
 - **MySql**
-- **dotEnv**
-- **multer**
-- **sequelize**
-- **nodemailer**
-- **jsonwebtoken**
+- **DotEnv** **Multer** **Sequelize**
+- **Nodemailer** **jsonwebtoken**
 - **Postman/Insomnia**
 --------------------------------------------------------------------
 ## License
