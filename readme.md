@@ -21,8 +21,20 @@ The database has 4  tables : categories, orders,curses and users.
 
 ## Starting with the project🌟🌟
 
+First set the configuration to your database:
+´´´js
+"development": {
+      "username": "root",
+      "password": "your password",
+      "database": "your db name",
+      "host": "127.0.0.1",
+      "dialect": "your language"
+    },
+´´´
 By default an Admin user is created ("admin") to start creating and making changes   to the data base.
 To add this admin to the database run the follow command: `sequelize db:seed:all`.
+Then migrate the tables to your DB: `sequelize db:migrate`.
+
 ---------------------------------------------------------------------------------------------------------------
 
 ## Basic endpoints
