@@ -8,8 +8,8 @@ const hash = bcrypt.hashSync(password,10)
 module.exports = {
   async up (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('users', [{
-      name: "bonsi",
-      email:"bonsi@gmail.com",
+      name: "admin",
+      email:"admin@gmail.com",
       password:hash,
       rol:"admin",
       confirmed:1,
