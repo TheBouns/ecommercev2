@@ -38,7 +38,7 @@ const UserController = {
       await transporter.sendMail({
         to: req.body.email,
         subject: "Leon Account",
-        html: `<h3>Click to confirm your account</h3><a href="${url}">click here!</a>`,
+        html: `<div style=" background-color: black; color:white"><h3>Click to confirm your account</h3><a href="${url}">click here!</a></div>`,
       });
       res.send();
     } catch (error) {
