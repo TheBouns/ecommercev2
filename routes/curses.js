@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const cursesController = require("../controller/cursescontroller");
 const {authentication,Admin} = require("../middleware/middleware")
+const uploadGenerator = require("../middleware/multer")
 
-router.post("/create",authentication,Admin, cursesController.insert);
+router.post("/create",authentication,Admin, uploadGenerator.single("img"),cursesController.insert);
 router.get("/", cursesController.showCurses);
 router.get("/:id", cursesController.showById);
 router.get("/title/:title", cursesController.showByNameAll);

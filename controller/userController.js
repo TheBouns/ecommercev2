@@ -1,7 +1,7 @@
-const { User,Curse,Token,Sequelize} = require("../models/index.js");
+const { User,Curse,Token,Sequelize,Order} = require("../models/index.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const {jwt_secret}  = require("../config/config.json")['development']
+const {jwt_secret}  = require("../config/config.json")['development'];
 const {Op} = Sequelize;
 
 
@@ -38,10 +38,16 @@ const UserController = {
       
   },
   showUsers(req, res) {
-    User.findAll().then((users) => res.send(users));
+    User.findAll({
+      include: [{model : Order , include:[{model: Curse}]}]
+    })
+    .then((users) => res.send(users))
+    .catch(err=> console.err(err))
   },
   userById(req, res) {
-    User.findByPk(req.params.id).then((user) => res.send(user));
+    User.findByPk(req.params.id)
+    .then((user) => res.send(user))
+    .catch(err=> console.error(err))
   },
   async updateUser(req, res,) {
     

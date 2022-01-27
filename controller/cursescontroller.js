@@ -3,6 +3,7 @@ const { Op } = Sequelize;
 
 const cursesController = {
   insert (req,res){
+    req.file ? req.body.img = req.file.filename : req.body.img ="not image provided";
     Curse.create({...req.body})
     .then(curse=>{
       curse.addCategories(req.body.CategoriesId)
