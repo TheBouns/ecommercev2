@@ -13,13 +13,13 @@ This is a simple database for an ecommerce developed with Node.js:
     * Server runs at [https://localhost:65000](https://localhost:4000) (by default).
     * Automatically restarts when any of your files change
 
-## Databases 
+## Databases
 
 By default the template is configured to connect to a MySql database.
 The database has 4  tables : categories, orders,curses and users.
 ![diagram representig the relation between tables in Mysql](ecommercedb.jpeg)
 
-## Starting with the project
+## Starting with the project🌟🌟
 
 By default is created an Admin user ("admin") to start to create endpoints and does changes to the data base.
 To add this admin to the database run the follow command: `sequelize db:seed:all`.
@@ -45,6 +45,7 @@ To add this admin to the database run the follow command: `sequelize db:seed:all
 - **sequelize**
 - **nodemailer**
 - **jsonwebtoken**
+- **Postman/Insomnia**
 --------------------------------------------------------------------
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
