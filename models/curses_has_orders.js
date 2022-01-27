@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   curses_has_orders.init({
-    CursesId: DataTypes.INTEGER,
+    CurseId: DataTypes.INTEGER,
     OrderId: DataTypes.INTEGER
   }, {
     sequelize,

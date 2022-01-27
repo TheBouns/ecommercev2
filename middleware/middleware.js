@@ -28,7 +28,7 @@ const authentication = async(req, res, next) => {
 }
 const Admin = async(req, res, next) => {
     const admins = ['admin'];
-    if (!admins.includes(req.user.role)) {
+    if (!admins.includes(req.user.rol)) {
         return res.status(403).send({
             message: 'You do not have permission'
         });

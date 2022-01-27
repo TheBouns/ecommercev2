@@ -22,18 +22,20 @@ const UserController = {
         }
         token = jwt.sign({id:user.id}, jwt_secret)
         Token.create({token,UserId:user.id});
-        res.send(`Welcome ${user.name}`)
+        res.status(200).send({message: `Welcome ${user.name}`, token})
     })
 },
 
   create(req, res) {
-    req.body.rol = "user";
+    console.log(req.body)
     const hash = bcrypt.hashSync(req.body.password,10)
     User.create({ ...req.body, password:hash })
       .then((user) =>
         res.status(201).send({ message: "User created", user })
+        
       )
       .catch(console.error);
+      
   },
   showUsers(req, res) {
     User.findAll().then((users) => res.send(users));
@@ -87,10 +89,10 @@ async logout(req, res) {
               ]
           }
       });
-      res.send({ message: 'Desconectado con éxito' })
+      res.send({ message: 'See you later alligator' })
   } catch (error) {
       console.log(error)
-      res.status(500).send({ message: 'hubo un problema al tratar de desconectarte' })
+      res.status(500).send({ message: 'Something went wrong -.-' })
   }
 }
 

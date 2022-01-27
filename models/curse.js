@@ -15,9 +15,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:"CategoriesId"
       });
       Curse.belongsToMany(models.Order, {
-        through: "curses_has_orders",
-        as: "orders",
-        foreignKey: "OrderId",
+        through: models.curses_has_orders,
+        onDelete:'cascade'
+        
       });
     }
   }
