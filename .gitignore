@@ -2,3 +2,4 @@
 .env
 /config/nodemailer.js
 /config/config.json
+/assets
