@@ -1,6 +1,7 @@
 const { User,Curse,Token,Sequelize,Order} = require("../models/index.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const transporter = require("../config/nodemailer");
 const {jwt_secret}  = require("../config/config.json")['development'];
 const {Op} = Sequelize;
 
@@ -26,15 +27,27 @@ const UserController = {
     })
 },
 
-  create(req, res) {
-    console.log(req.body)
-    const hash = bcrypt.hashSync(req.body.password,10)
-    User.create({ ...req.body, password:hash })
-      .then((user) =>
-        res.status(201).send({ message: "User created", user })
-        
-      )
-      .catch(console.error);
+  async create(req, res) {
+    try {
+      const hash = bcrypt.hashSync(req.body.password,10)
+      const user = await User.create({ 
+        ...req.body, 
+        password:hash, 
+        rol:"user",
+        confirmed:"false"});
+      const url = 'http://localhost:4000/users/confirm'+req.body.email;
+      await transporter.sendMail({
+        to : req.body.email,
+        subject:"Leon Account",
+        html:`<h3>Click to confirm your account</h3><a href="${url}">click here!</a>`
+      })
+      res.send("GRACIAS JOAQUIN")
+    } catch (error) {
+      console.log(error)
+      
+    }
+    
+    
       
   },
   showUsers(req, res) {
@@ -100,7 +113,20 @@ async logout(req, res) {
       console.log(error)
       res.status(500).send({ message: 'Something went wrong -.-' })
   }
-}
+},
+async confirm(req,res){
+  try {
+    const user = await User.update({confirmed:true},{
+      where:{
+        email: req.params.email
+      }
+    })
+    res.status(201).send( "Confirmation was confirmed" );
+  } catch (error) {
+    console.error(error)
+  }
+},
+
 
 
 };
