@@ -17,7 +17,7 @@ This is a simple database for an ecommerce developed with Node.js:
 
 By default the template is configured to connect to a MySql database.
 The database has 4  tables : categories, orders,curses and users.
-![diagram representig the relation between tables in Mysql](ecommercedb.jpeg)
+![diagram representig the relation between tables in Mysql](assets/ecommercedb.jpeg)
 
 ## Starting with the project🌟🌟
 
@@ -55,8 +55,8 @@ Then migrate the tables to your DB: `sequelize db:migrate`.
 - **Express**
 - **Nodemon**
 - **MySql**
-- **DotEnv** **Multer** **Sequelize**
-- **Nodemailer** **jsonwebtoken**
+- **DotEnv**/**Multer**/**Sequelize**
+- **Nodemailer** / **jsonwebtoken**
 - **Postman/Insomnia**
 --------------------------------------------------------------------
 ## License
