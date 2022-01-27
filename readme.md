@@ -33,6 +33,7 @@ First set the configuration to your database:
 ```
 By default an Admin user is created ("admin") to start creating and making changes   to the data base.
 To add this admin to the database run the follow command: `sequelize db:seed:all`.
+
 Then migrate the tables to your DB: `sequelize db:migrate`.
 
 ---------------------------------------------------------------------------------------------------------------
